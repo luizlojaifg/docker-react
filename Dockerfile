@@ -2,11 +2,12 @@ FROM node:14.11.0-alpine3.11
 
 WORKDIR '/app'
 
-COPY package.json .
+COPY package*.json ./
 RUN npm install
 COPY . . 
+RUN npm run build 
 
-CMD ["npm","run","start"]
+
 
 FROM nginx
 EXPOSE 80
